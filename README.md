@@ -43,7 +43,53 @@ sh backup.sh Examples/Pods,Examples/Podfile,Examples/Podfile.lock 注释信息
 
 ![](https://raw.githubusercontent.com/AndyM129/ImageHosting/master/images/20210331221048.png)
 
+## Install （⭐️ Recommended）
 
+> 注：以下内容为针对 MacOS 进行的配置&说明。
+
+以上，是脚本的基础用法，但是更推荐直接安装到本地，即可 像执行系统命令一样的进行备份，具体方法如下。
+
+1. 打开`~/.bashrc`文件，并追加如下代码
+
+  ```shell
+  ##############################【Backup】#################################
+  alias backup='sh ~/.bash_files/BackupFiles/backup.sh'
+  alias backup.install='install_path="/Users/$USER/.bash_files/BackupFiles"; git_url="https://github.com/AndyM129/BackupFiles.git"; rm -rf "$install_path"; git clone $git_url $install_path; echo "backup.sh install success: $install_path"; open $install_path;'
+  alias backup.opendir='open /Users/$USER/Documents/BackupFiles'
+  alias o.bak='backup.opendir'
+  ```
+
+2. 执行如下命令，以便让修改生效
+
+	```shell
+	source ~/.bashrc # 可在任意目录下执行
+	```
+
+3. 安装
+
+	```shell
+	backup.install # 可在任意目录下执行
+	```
+
+4. 可以使用了
+
+	```shell
+	前面的示例，可以简化为：
+	
+	# 查看使用说明
+	backup -h
+	
+	# 备份单个文件夹
+	backup Examples
+	
+	# 备份多个文件，并添加注释
+	backup Examples/Pods,Examples/Podfile,Examples/Podfile.lock 注释信息
+	
+	# 打开备份的目录
+	backup.opendir
+	```
+
+	
 
 ## History
 
@@ -64,6 +110,7 @@ Feel free to collaborate with ideas, issues and/or pull requests.
 ## License
 
 AMKCategories is available under the MIT license. See the LICENSE file for more info.
+
 
 
 
